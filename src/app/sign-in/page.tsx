@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function SignInPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
@@ -18,12 +20,12 @@ export default function SignInPage() {
             <p className="text-gray-600 mb-6">
               To enable authentication, please follow the setup instructions in the CLERK_SETUP.md file.
             </p>
-            <a
+            <Link
               href="/"
               className="btn-primary inline-block"
             >
               Back to Home
-            </a>
+            </Link>
           </div>
         </div>
       </div>

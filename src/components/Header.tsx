@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,12 +43,12 @@ const Header = () => {
 
           {/* Auth Button Placeholder */}
           <div className="hidden md:flex items-center space-x-4">
-            <a
+            <Link
               href="/sign-in"
               className="btn-primary"
             >
               Sign In
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -79,12 +80,12 @@ const Header = () => {
               ))}
               {/* Mobile Auth */}
               <div className="px-4 pt-4 border-t border-gray-200">
-                <a
+                <Link
                   href="/sign-in"
                   className="w-full btn-primary block text-center"
                 >
                   Sign In
-                </a>
+                </Link>
               </div>
             </nav>
           </div>
