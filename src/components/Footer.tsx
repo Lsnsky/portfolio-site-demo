@@ -24,7 +24,7 @@ const Footer = () => {
                 <span className="text-xl font-bold">JCREA</span>
               </div>
               <p className="text-gray-400 leading-relaxed mb-6">
-                Creating exceptional user experiences through innovative design solutions. Let's bring your ideas to life.
+                Creating exceptional user experiences through innovative design solutions. Let&apos;s bring your ideas to life.
               </p>
               <div className="flex space-x-4">
                 <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-200">

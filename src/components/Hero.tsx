@@ -23,7 +23,7 @@ const Hero = () => {
             {/* Main Heading */}
             <div className="space-y-4">
               <h1 className="text-5xl lg:text-6xl font-bold text-dark leading-tight">
-                I'm Jenny,{' '}
+                I&apos;m Jenny,{' '}
                 <span className="text-primary">Product Designer</span>
               </h1>
               <p className="text-xl text-gray-600 max-w-lg">
@@ -33,9 +33,9 @@ const Hero = () => {
 
             {/* Testimonial */}
             <div className="relative">
-              <div className="text-6xl text-primary font-bold">"</div>
+              <div className="text-6xl text-primary font-bold">&quot;</div>
               <p className="text-lg text-gray-700 italic pl-8">
-                Jenny's exceptional product design ensures our website's success. Highly Recommended
+                Jenny&apos;s exceptional product design ensures our website&apos;s success. Highly Recommended
               </p>
             </div>
 

@@ -42,7 +42,7 @@ const Portfolio = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-dark mb-6">
-            Let's have a look at my{' '}
+            Let&apos;s have a look at my{' '}
             <span className="text-primary">Portfolio</span>
           </h2>
           <button className="btn-primary flex items-center space-x-2 mx-auto">

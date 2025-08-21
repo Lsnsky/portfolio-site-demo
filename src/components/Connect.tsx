@@ -17,7 +17,7 @@ const Connect = () => {
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-dark mb-6">
             Have an Awesome Project Idea?{' '}
-            <span className="text-primary">Let's Discuss</span>
+            <span className="text-primary">Let&apos;s Discuss</span>
           </h2>
           
           {/* Email Input */}
@@ -89,7 +89,7 @@ const Connect = () => {
           className="text-center"
         >
           <h3 className="text-3xl lg:text-4xl font-bold text-dark mb-8">
-            Let's{' '}
+            Let&apos;s{' '}
             <span className="text-primary">Connect</span>
           </h3>
           <button className="btn-primary flex items-center space-x-2 mx-auto">
