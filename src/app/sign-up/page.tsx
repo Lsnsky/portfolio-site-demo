@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { SignUp } from "@clerk/nextjs";
 
 export default function SignUpPage() {
   return (
@@ -14,20 +14,22 @@ export default function SignUpPage() {
           <h1 className="text-2xl font-bold text-dark mb-2">Join JCREA</h1>
           <p className="text-gray-600">Create your account to get started</p>
         </div>
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          <div className="text-center">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Authentication Setup Required</h2>
-            <p className="text-gray-600 mb-6">
-              To enable registration, please follow the setup instructions in the CLERK_SETUP.md file.
-            </p>
-            <Link
-              href="/"
-              className="btn-primary inline-block"
-            >
-              Back to Home
-            </Link>
-          </div>
-        </div>
+        <SignUp 
+          appearance={{
+            elements: {
+              rootBox: "mx-auto",
+              card: "shadow-xl border-0 bg-white rounded-2xl",
+              headerTitle: "text-2xl font-bold text-dark",
+              headerSubtitle: "text-gray-600",
+              formButtonPrimary: "bg-primary hover:bg-primary-dark text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200",
+              formFieldInput: "border border-gray-200 rounded-lg px-4 py-3 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all duration-200",
+              formFieldLabel: "text-gray-700 font-medium mb-2",
+              footerActionLink: "text-primary hover:text-primary-dark font-medium",
+              dividerLine: "bg-gray-200",
+              dividerText: "text-gray-500 bg-white px-4",
+            }
+          }}
+        />
       </div>
     </div>
   );

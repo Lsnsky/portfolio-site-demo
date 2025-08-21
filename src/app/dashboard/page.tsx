@@ -2,8 +2,11 @@
 
 import { motion } from 'framer-motion';
 import { User, Settings, BarChart3, FileText, Mail } from 'lucide-react';
+import { useUser } from '@clerk/nextjs';
 
 export default function DashboardPage() {
+  const { user } = useUser();
+  
   const stats = [
     { title: 'Profile Views', value: '1,234', icon: User, color: 'text-blue-500' },
     { title: 'Messages', value: '56', icon: Mail, color: 'text-green-500' },
@@ -23,14 +26,16 @@ export default function DashboardPage() {
         >
           <div className="flex items-center space-x-4">
             <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-2xl">U</span>
+              <span className="text-white font-bold text-2xl">
+                {user?.firstName?.[0] || user?.emailAddresses[0]?.emailAddress?.[0] || 'U'}
+              </span>
             </div>
             <div>
               <h1 className="text-3xl font-bold text-dark">
-                Welcome to Dashboard!
+                Welcome back, {user?.firstName || 'User'}!
               </h1>
               <p className="text-gray-600">
-                This is a preview of your portfolio dashboard. Complete Clerk setup to enable full functionality.
+                Here&apos;s what&apos;s happening with your portfolio today.
               </p>
             </div>
           </div>

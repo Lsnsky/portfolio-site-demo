@@ -1,11 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, User } from 'lucide-react';
 import Link from 'next/link';
+import { SignInButton, SignOutButton, SignedIn, SignedOut, useUser } from '@clerk/nextjs';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user } = useUser();
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -41,14 +43,34 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Auth Button Placeholder */}
+          {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link
-              href="/sign-in"
-              className="btn-primary"
-            >
-              Sign In
-            </Link>
+            <SignedOut>
+              <SignInButton>
+                <button className="btn-primary">
+                  Sign In
+                </button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <div className="flex items-center space-x-3">
+                <Link
+                  href="/dashboard"
+                  className="text-gray-600 hover:text-primary transition-colors duration-200 font-medium"
+                >
+                  Dashboard
+                </Link>
+                <div className="flex items-center space-x-2 text-sm text-gray-600">
+                  <User className="w-4 h-4" />
+                  <span>{user?.firstName || user?.emailAddresses[0]?.emailAddress}</span>
+                </div>
+                <SignOutButton>
+                  <button className="text-gray-600 hover:text-primary transition-colors duration-200 font-medium">
+                    Sign Out
+                  </button>
+                </SignOutButton>
+              </div>
+            </SignedIn>
           </div>
 
           {/* Mobile Menu Button */}
@@ -80,12 +102,32 @@ const Header = () => {
               ))}
               {/* Mobile Auth */}
               <div className="px-4 pt-4 border-t border-gray-200">
-                <Link
-                  href="/sign-in"
-                  className="w-full btn-primary block text-center"
-                >
-                  Sign In
-                </Link>
+                <SignedOut>
+                  <SignInButton>
+                    <button className="w-full btn-primary block text-center">
+                      Sign In
+                    </button>
+                  </SignInButton>
+                </SignedOut>
+                <SignedIn>
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-2 text-sm text-gray-600">
+                      <User className="w-4 h-4" />
+                      <span>{user?.firstName || user?.emailAddresses[0]?.emailAddress}</span>
+                    </div>
+                    <Link
+                      href="/dashboard"
+                      className="w-full text-left text-gray-600 hover:text-primary transition-colors duration-200 font-medium block"
+                    >
+                      Dashboard
+                    </Link>
+                    <SignOutButton>
+                      <button className="w-full text-left text-gray-600 hover:text-primary transition-colors duration-200 font-medium">
+                        Sign Out
+                      </button>
+                    </SignOutButton>
+                  </div>
+                </SignedIn>
               </div>
             </nav>
           </div>
