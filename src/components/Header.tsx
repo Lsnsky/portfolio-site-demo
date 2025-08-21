@@ -1,10 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, User } from 'lucide-react';
+import { SignInButton, SignOutButton, useUser } from '@clerk/nextjs';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isSignedIn, user } = useUser();
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -40,6 +42,35 @@ const Header = () => {
             ))}
           </nav>
 
+          {/* Auth Buttons */}
+          <div className="hidden md:flex items-center space-x-4">
+            {isSignedIn ? (
+              <div className="flex items-center space-x-3">
+                <a
+                  href="/dashboard"
+                  className="text-gray-600 hover:text-primary transition-colors duration-200 font-medium"
+                >
+                  Dashboard
+                </a>
+                <div className="flex items-center space-x-2 text-sm text-gray-600">
+                  <User className="w-4 h-4" />
+                  <span>{user?.firstName || user?.emailAddresses[0]?.emailAddress}</span>
+                </div>
+                <SignOutButton>
+                  <button className="text-gray-600 hover:text-primary transition-colors duration-200 font-medium">
+                    Sign Out
+                  </button>
+                </SignOutButton>
+              </div>
+            ) : (
+              <SignInButton>
+                <button className="btn-primary">
+                  Sign In
+                </button>
+              </SignInButton>
+            )}
+          </div>
+
           {/* Mobile Menu Button */}
           <button
             className="md:hidden p-2"
@@ -67,6 +98,28 @@ const Header = () => {
                   {item.name}
                 </a>
               ))}
+              {/* Mobile Auth */}
+              <div className="px-4 pt-4 border-t border-gray-200">
+                {isSignedIn ? (
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-2 text-sm text-gray-600">
+                      <User className="w-4 h-4" />
+                      <span>{user?.firstName || user?.emailAddresses[0]?.emailAddress}</span>
+                    </div>
+                    <SignOutButton>
+                      <button className="w-full text-left text-gray-600 hover:text-primary transition-colors duration-200 font-medium">
+                        Sign Out
+                      </button>
+                    </SignOutButton>
+                  </div>
+                ) : (
+                  <SignInButton>
+                    <button className="w-full btn-primary">
+                      Sign In
+                    </button>
+                  </SignInButton>
+                )}
+              </div>
             </nav>
           </div>
         )}
